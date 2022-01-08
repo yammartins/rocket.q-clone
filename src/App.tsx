@@ -1,9 +1,10 @@
 import React from 'react';
+import Homepage from './components/HomePage';
 import './styles/index.scss';
+import './styles/main.scss';
 
 const App: React.FC = () => (
-  <h1>Hello World</h1>
-
+  <Homepage />
 );
 
 export default App;
