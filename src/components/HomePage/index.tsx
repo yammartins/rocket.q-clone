@@ -1,11 +1,24 @@
 import { LogoutIcon } from '@heroicons/react/solid';
 import { UsersIcon } from '@heroicons/react/outline';
-import Illustration from '../Decoration';
+import Logo from '../../assets/Icon.svg';
+import Saly from '../../assets/Saly-6.svg';
 
 const Homepage: React.FC = () => (
 
-  <main className="homepage">
-    <Illustration />
+  <main className="container flex">
+    <div className="picture flex">
+      <div className="picture-logo">
+        <img src={Logo} alt="logo da rocketq" />
+        <h1>
+          rocket
+          <span className="text-blue">.</span>
+          q
+        </h1>
+      </div>
+      <div className="picture-illustration">
+        <img src={Saly} alt="Mascote da rocket.q" />
+      </div>
+    </div>
     <div className="homepage-main">
       <div className="homepage-main-member">
         <h1>Entre como participante</h1>

@@ -1,0 +1,14 @@
+@layer base {
+  .container {
+    @apply  max-w-screen-ws;
+  }
+  *,
+  html,
+  #root {
+    @apply bg-[#FBFCFF]
+  }
+  h1 {
+    @apply text-ttext text-title font-poppins font-bold; 
+  }
+
+}  

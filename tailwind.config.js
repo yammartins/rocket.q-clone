@@ -10,12 +10,11 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       blue: '#3485FF',
-      WText: '#FAFAFA',
-      TText: '#0D114F',
-      GreyBlue: '#A1B2CD',
-      GreyGrey: '#4D5E77',
-      background: '#FBFCFF',
-      Liblue: '#E0ECFF',
+      wtext: '#FAFAFA',
+      ttext: '#0D114F',
+      greyblue: '#A1B2CD',
+      greygrey: '#4D5E77',
+      liblue: '#E0ECFF',
       trash: '#E83F5B',
       icon: '#A5B0C1',
       cancel: '#E5EAF1'
@@ -35,16 +34,12 @@ module.exports = {
       details: ['14px', '19px'],
       box: ['24px', '34px']
     },
-     sansWeight: {
-       normal: 400,
-       medium: 500
-     },
-     poppinsWeight: {
-      normal: 400,
-      medium: 500,
-      semibold: 600,
-      bold: 700
-     },
+    screens: {
+      'ws': '1120px'
+    },
+    container: {
+      center: true,
+    },
     extend: {},
   },
   plugins: [],

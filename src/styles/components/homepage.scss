@@ -1,0 +1,16 @@
+@layer components {
+  .picture {
+    @apply flex-col gap-[4.125rem];
+
+    &-logo {
+      @apply mt-[2.185rem] items-center flex gap-[10.5px]; 
+    }
+    &-illustration {
+      @apply bg-blue rounded-[50%] w-[39.5625rem] h-[39.5625rem] relative;
+
+      img {
+        @apply absolute 
+      } 
+    }
+  }
+}
