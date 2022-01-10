@@ -1,20 +1,46 @@
 @layer components {
-  .picture {
-    @apply flex-col gap-[4.125rem];
-
-    &-logo {
-      @apply mt-[2.185rem] items-center flex gap-3; 
+  .wraper {
+    @apply flex;
+    .picture {
+      @apply flex-col gap-[4.125rem];
+  
+      &-logo {
+        @apply mt-[2.185rem] items-center flex gap-3; 
+      }
+      &-illustration {
+        @apply bg-main rounded-full w-[40rem] h-[40rem] relative items-center -left-[14.5rem] mb-auto;
+  
+        img {
+          @apply absolute -right-32 -top-4
+        }
+        &::before {
+          @apply content-[""] w-[17rem] h-[17rem] bg-main opacity-10 rounded-full absolute left-[25rem] bottom-0;
+        }
+      }
     }
-    &-illustration {
-      @apply bg-main rounded-full w-[40rem] h-[40rem] relative items-center -left-[12.5rem] mb-auto;
-
-      img {
-        @apply absolute -right-32 -top-4
+    .homepage {
+      @apply m-auto gap-10;
+  
+      &-member {
+        @apply relative;
+  
+        .room {
+          @apply mt-6 mb-5 rounded-lg border-2 border-greyblue ;
+        }
+        .button {
+          @apply rounded-lg items-center flex text-wtext font-poppins text-base;
+        }
       }
-      &::before {
-        @apply content-[""] w-[17rem] h-[17rem] bg-main opacity-10 rounded-full absolute left-[25rem] bottom-0;
+      .divider {
+        @apply items-center font-poppins text-base; 
       }
-
+      &-host {
+        @apply relative; 
+        
+        .button1 {
+          @apply bg-[#FBFCFF] font-poppins text-base rounded-lg border-blue border-2 items-center;
+        }
+      }
     }
   }
 }
