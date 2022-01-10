@@ -6,13 +6,13 @@
       @apply mt-[2.185rem] items-center flex gap-3; 
     }
     &-illustration {
-      @apply bg-main rounded-full w-[40rem] h-[40rem] relative items-center -left-[12.5rem] mb-2;
+      @apply bg-main rounded-full w-[40rem] h-[40rem] relative items-center -left-[12.5rem] mb-auto;
 
       img {
         @apply absolute -right-32 -top-4
       }
       &::before {
-        @apply content-[""] w-[17rem] h-[17rem] bg-main opacity-10 absolute;
+        @apply content-[""] w-[17rem] h-[17rem] bg-main opacity-10 rounded-full absolute left-[25rem] bottom-0;
       }
 
     }
