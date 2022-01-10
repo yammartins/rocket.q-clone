@@ -1,0 +1,7 @@
+@layer components {
+  .text {
+     &-h1 {
+      @apply text-ttext text-title font-poppins font-bold; 
+    }
+  }
+}

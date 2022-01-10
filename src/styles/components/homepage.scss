@@ -3,14 +3,18 @@
     @apply flex-col gap-[4.125rem];
 
     &-logo {
-      @apply mt-[2.185rem] items-center flex gap-[10.5px]; 
+      @apply mt-[2.185rem] items-center flex gap-3; 
     }
     &-illustration {
-      @apply bg-blue rounded-[50%] w-[39.5625rem] h-[39.5625rem] relative;
+      @apply bg-main rounded-full w-[40rem] h-[40rem] relative items-center -left-[12.5rem] mb-2;
 
       img {
-        @apply absolute 
-      } 
+        @apply absolute -right-32 -top-4
+      }
+      &::before {
+        @apply content-[""] w-[17rem] h-[17rem] bg-main opacity-10 absolute;
+      }
+
     }
   }
 }

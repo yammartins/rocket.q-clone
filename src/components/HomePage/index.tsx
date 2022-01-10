@@ -9,7 +9,7 @@ const Homepage: React.FC = () => (
     <div className="picture flex">
       <div className="picture-logo">
         <img src={Logo} alt="logo da rocketq" />
-        <h1>
+        <h1 className="text-h1">
           rocket
           <span className="text-blue">.</span>
           q
@@ -21,7 +21,7 @@ const Homepage: React.FC = () => (
     </div>
     <div className="homepage-main">
       <div className="homepage-main-member">
-        <h1>Entre como participante</h1>
+        <h1 className="text-h1">Entre como participante</h1>
         <form action="" method="post">
           <input type="text" className="room" />
           <button type="submit">
@@ -32,7 +32,7 @@ const Homepage: React.FC = () => (
       </div>
       <div className="divider">ou</div>
       <div className="homepage-main-host">
-        <h1>Crie sua própria sala, de forma fácil</h1>
+        <h1 className="text-h1">Crie sua própria sala, de forma fácil</h1>
         <button type="button">
           <UsersIcon className="create" />
           Criar sala
