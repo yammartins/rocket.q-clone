@@ -3,8 +3,7 @@ import { UsersIcon } from '@heroicons/react/outline';
 import Logo from '../../assets/Icon.svg';
 import Saly from '../../assets/Saly-6.svg';
 
-const Homepage: React.FC = () => (
-
+const About: React.FC = () => (
   <main className="wraper container">
     <div className="picture flex">
       <div className="picture-logo">
@@ -21,7 +20,7 @@ const Homepage: React.FC = () => (
     </div>
     <div className="homepage grid">
       <div className="homepage-member relative">
-        <h1 className="text-h1">Entre como participante</h1>
+        <h1 className="text-h1">About</h1>
         <form action="" method="post" className="grid">
           <input
             type="text"
@@ -60,4 +59,4 @@ const Homepage: React.FC = () => (
 
 );
 
-export default Homepage;
+export default About;

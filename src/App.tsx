@@ -1,9 +1,7 @@
 import './styles/index.scss';
 import React from 'react';
-import Homepage from './components/HomePage';
+import Routes from './routes'
 
-const App: React.FC = () => (
-  <Homepage />
-);
+const App: React.FC = () => <Routes />;
 
 export default App;
