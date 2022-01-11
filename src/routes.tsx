@@ -1,13 +1,13 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Homepage from './pages/HomePage';
-import About from './pages/About';
+import CreateSala from './pages/CreateSala';
 
 const Router: React.FC = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Homepage />} />
 
-      <Route path="about" element={<About />} />
+      <Route path="createsala" element={<CreateSala />} />
     </Routes>
   </BrowserRouter>
 );

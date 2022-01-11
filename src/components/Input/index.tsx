@@ -1,17 +1,35 @@
-import React from 'react';
+import { HTMLAttributes } from 'react';
+
 import classNames from 'classnames';
 
-interface InputProps {
-  type?: boolean;
-  placeholder?: string;
-
+interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+  submit?: boolean,
+  login?: string;
+  maincreate?: string;
 }
 
-const Input: React.FC<InputProps> = ({
-  type,
-  placeholder,
+const Button: React.FC<ButtonProps> = ({
+  login,
+  submit,
+  maincreate,
+  children,
+  ...rest
 }) => {
-  const input = classNames();
+  const styled = classNames(
+    'default',
+    login && 'login',
+    maincreate && 'hp-createchannel',
+  );
+
+  return (
+    <button
+      {...rest}
+      type={submit ? 'submit' : 'button'}
+      className={styled}
+    >
+      {children}
+    </button>
+  );
 };
 
-export default Input;
+export default Button;
