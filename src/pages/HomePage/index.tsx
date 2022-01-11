@@ -13,7 +13,7 @@ const Homepage: React.FC = () => {
   const submit = () => {
     // request to api.
 
-    navigate('createsala');
+    navigate('canaldoyam');
   };
 
   return (

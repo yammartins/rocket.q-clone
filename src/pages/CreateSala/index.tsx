@@ -12,7 +12,7 @@ const CreateSala: React.FC = () => {
   const submit = () => {
     // request to api.
 
-    navigate('salaquevocecriou');
+    navigate('/canaldoyam');
   };
 
   return (

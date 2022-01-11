@@ -7,6 +7,10 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   enterchannel?: boolean;
   maincreate?: boolean;
   serverid?: number;
+  channelid?: boolean;
+  minicreate?: boolean;
+  form?: boolean;
+
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -14,12 +18,18 @@ const Button: React.FC<ButtonProps> = ({
   submit,
   maincreate,
   children,
+  channelid,
+  minicreate,
+  form,
   ...rest
 }) => {
   const styled = classNames(
-    'default',
+    'button',
     enterchannel && 'enterchannel',
     maincreate && 'hp-createchannel',
+    channelid && 'channel-id',
+    minicreate && 'minicreate',
+    form && 'chat-submit',
   );
 
   return (

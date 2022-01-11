@@ -27,19 +27,12 @@
         .channel {
           @apply mt-6 mb-5 rounded-lg border-2 border-greyblue ;
         }
-        .enterchannel {
-          @apply h-12 w-[22.7rem] bg-blue gap-3 pl-[6.5rem] pr-24 rounded-lg items-center flex text-wtext font-poppins text-base;
-        }
       }
       .divider {
         @apply items-center font-poppins text-base; 
       }
       &-host {
         @apply relative; 
-        
-        .hp-createchannel {
-          @apply bg-[#FBFCFF] font-poppins text-base rounded-lg border-blue border-2 items-center flex w-[22.7rem] h-12 gap-1 text-blue pl-32 pr-20;
-        }
       }
     }
   }

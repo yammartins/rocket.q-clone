@@ -1,6 +1,8 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import Homepage from './pages/HomePage';
+
+import Channel from './pages/Channel';
 import CreateSala from './pages/CreateSala';
+import Homepage from './pages/HomePage';
 
 const Router: React.FC = () => (
   <BrowserRouter>
@@ -8,6 +10,9 @@ const Router: React.FC = () => (
       <Route path="/" element={<Homepage />} />
 
       <Route path="createsala" element={<CreateSala />} />
+
+      <Route path="canaldoyam" element={<Channel />} />
+
     </Routes>
   </BrowserRouter>
 );
