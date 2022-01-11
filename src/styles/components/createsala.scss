@@ -1,0 +1,8 @@
+@layer components {
+  .create-room {
+    @apply relative;
+    .enterchannel {
+      @apply h-12 w-[22.7rem] bg-blue gap-3 pl-[6.5rem] pr-24 rounded-lg items-center flex text-wtext font-poppins text-base;
+    }
+  }
+}

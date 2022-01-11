@@ -4,12 +4,13 @@ import classNames from 'classnames';
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   submit?: boolean,
-  login?: string;
-  maincreate?: string;
+  enterchannel?: boolean;
+  maincreate?: boolean;
+  serverid?: number;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  login,
+  enterchannel,
   submit,
   maincreate,
   children,
@@ -17,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const styled = classNames(
     'default',
-    login && 'login',
+    enterchannel && 'enterchannel',
     maincreate && 'hp-createchannel',
   );
 

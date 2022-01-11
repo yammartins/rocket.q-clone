@@ -1,9 +1,11 @@
-import { LogoutIcon } from '@heroicons/react/solid';
+import { useNavigate, Link } from 'react-router-dom';
+
 import { UsersIcon } from '@heroicons/react/outline';
-import { useNavigate } from 'react-router-dom';
+import { LogoutIcon } from '@heroicons/react/solid';
 
 import Logo from '../../assets/Icon.svg';
 import Saly from '../../assets/Saly-6.svg';
+import Button from '../../components/Button';
 
 const Homepage: React.FC = () => {
   const navigate = useNavigate();
@@ -11,11 +13,11 @@ const Homepage: React.FC = () => {
   const submit = () => {
     // request to api.
 
-    navigate('about');
+    navigate('createsala');
   };
 
   return (
-    <main className="wraper container">
+    <header className="wraper container">
       <div className="picture flex">
         <div className="picture-logo">
           <img src={Logo} alt="logo da rocketq" />
@@ -38,19 +40,16 @@ const Homepage: React.FC = () => {
           >
             <input
               type="text"
-              className="room h-12 w-[22.7rem] p-4 text-base bg-[#FBFCFF]"
+              className="channel h-12 w-[22.7rem] p-4 text-base bg-[#FBFCFF]"
               placeholder="Código da sala"
             />
 
-            <button
-              type="submit"
-              className="button h-12 w-[22.7rem] bg-blue gap-3 pl-[6.5rem] pr-24"
-            >
+            <Button submit enterchannel>
               <LogoutIcon
                 className="login w-6 h-6"
               />
               Entrar na sala
-            </button>
+            </Button>
           </form>
         </div>
         <div className="divider text-greyblue flex gap-[0.84rem]">
@@ -64,13 +63,15 @@ const Homepage: React.FC = () => {
             <br />
             forma fácil
           </h1>
-          <button type="button" className="button1 flex w-[22.7rem] h-12 gap-1 text-blue pl-32 pr-20">
-            <UsersIcon className="create w-5 h-5 text-blue" />
-            Criar sala
-          </button>
+          <Link to="createsala">
+            <Button maincreate>
+              <UsersIcon className="create w-5 h-5 text-blue" />
+              Criar sala
+            </Button>
+          </Link>
         </div>
       </div>
-    </main>
+    </header>
 
   );
 };
