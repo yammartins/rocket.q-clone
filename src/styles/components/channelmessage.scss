@@ -14,7 +14,7 @@
       .question-buttons {
         @apply flex justify-end gap-6;
         .check {
-          @apply flex gap-2 items-center;
+          @apply flex gap-2 items-center cursor-pointer;
         }
         .trash {
           @apply flex gap-2 items-center;
@@ -33,7 +33,7 @@
       .question-buttons {
         @apply flex justify-end gap-6;
         .check {
-          @apply flex gap-2 items-center;
+          @apply flex gap-2 items-center cursor-pointer;
         }
         .trash {
           @apply hidden;

@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { DuplicateIcon } from '@heroicons/react/outline';
 import { UsersIcon } from '@heroicons/react/outline';
@@ -44,72 +46,82 @@ const chat = [
 
 ];
 
-const MessageChat: React.FC = () => (
-  <>
-    <header className="container channel flex mt-[2.185rem] mb- items-center justify-between">
-      <div className="channel-icon flex gap-3">
-        <img src={Logo} alt="logo da rocketq" />
-        <h1 className="text-h1">
-          rocket
-          <span className="text-blue">.</span>
-          q
-        </h1>
-      </div>
-      <div className="channel-buttons flex gap-2">
-        <Button channelid>
-          #512302
-          <DuplicateIcon className="create w-5 h-5" />
-        </Button>
-        <Link to="/createsala">
-          <Button minicreate submit>
-            <UsersIcon className="create w-[1.1rem] h-[1.1rem]" />
-            <span>Criar sala</span>
+const MessageChat: React.FC = () => {
+  const [cruz, onCruz] = useState(false);
+  const { hash } = useLocation();
+
+  return (
+
+    <>
+      <header className="container channel flex mt-[2.185rem] mb- items-center justify-between">
+        <div className="channel-icon flex gap-3">
+          <img src={Logo} alt="logo da rocketq" />
+          <h1 className="text-h1">
+            rocket
+            <span className="text-blue">.</span>
+            q
+          </h1>
+        </div>
+        <div className="channel-buttons flex gap-2">
+          <Button channelid>
+            #512302
+            <DuplicateIcon className="create w-5 h-5" />
           </Button>
-        </Link>
-      </div>
-    </header>
-    <main className="channelbox container">
-      <div className="box mb-4">
-        <h1 className="text-h1">Faça sua pergunta</h1>
-        <div className="box-chat">
-          <input type="text" className="box-chat-ask bg-[#FBFCFF]" placeholder="O que você quer perguntar?" />
-          <div className="box-chat-button">
-            <span className="flex gap-[0.4rem]">
-              <LockClosedIcon className="w-5 h-5" />
-              Essa pergunta é anônima
-            </span>
-            <Button form>
-              Enviar
+          <Link to="/createsala">
+            <Button minicreate submit>
+              <UsersIcon className="create w-[1.1rem] h-[1.1rem]" />
+              <span>Criar sala</span>
             </Button>
+          </Link>
+        </div>
+      </header>
+      <main className="channelbox container">
+        <div className="box mb-4">
+          <h1 className="text-h1">Faça sua pergunta</h1>
+          <div className="box-chat">
+            <input type="text" className="box-chat-ask bg-[#FBFCFF]" placeholder="O que você quer perguntar?" />
+            <div className="box-chat-button">
+              <span className="flex gap-[0.4rem]">
+                <LockClosedIcon className="w-5 h-5" />
+                Essa pergunta é anônima
+              </span>
+              <Button form>
+                Enviar
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="questionslog flex flex-col gap-2">
-        {chat.map(({ question, id }) => (
-          <div key={id} className="question-closed">
-            <div className="question-box">
-              <div className="question-box-profile">
-                <UserIcon className="w-6 h-6 text-wtext" />
+        <div className="questionslog flex flex-col gap-2">
+          {chat.map(({ question, id }) => (
+            <div key={id} className={`question-open ${cruz ? 'question-closed' : ''} `}>
+              <div className="question-box">
+                <div className="question-box-profile">
+                  <UserIcon className="w-6 h-6 text-wtext" />
+                </div>
+                <p className="text-ttext relative font-sans font-normal text-base w-[auto]">
+                  {question}
+                </p>
               </div>
-              <p className="text-ttext relative font-sans font-normal text-base w-[auto]">
-                {question}
-              </p>
+              <div className="question-buttons">
+                <div
+                  role="presentation"
+                  onClick={() => onCruz((prev) => ! prev)}
+                  className="check"
+                >
+                  <CheckIcon className="w-5 h-5 text-blue" />
+                  <span className="text-greygrey font-sans font-normal text-base"> Marcar como lida</span>
+                </div>
+                <div className="trash">
+                  <TrashIcon className="w-5 h-5 text-trash" />
+                  <span className="text-greygrey font-sans font-normal text-base"> Excluir</span>
+                </div>
+              </div>
             </div>
-            <div className="question-buttons">
-              <div className="check">
-                <CheckIcon className="w-5 h-5 text-blue" />
-                <span className="text-greygrey font-sans font-normal text-base"> Marcar como lida</span>
-              </div>
-              <div className="trash">
-                <TrashIcon className="w-5 h-5 text-trash" />
-                <span className="text-greygrey font-sans font-normal text-base"> Excluir</span>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </main>
-  </>
-);
+          ))}
+        </div>
+      </main>
+    </>
+  );
+};
 
 export default MessageChat;
