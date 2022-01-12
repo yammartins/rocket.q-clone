@@ -1,12 +1,14 @@
 @layer components {
   .wraper {
     @apply flex;
+
     .picture {
       @apply flex-col gap-[4.125rem];
   
       &-logo {
         @apply mt-[2.185rem] items-center flex gap-3; 
       }
+
       &-illustration {
         @apply bg-main rounded-full w-[40rem] h-[40rem] relative items-center -left-[14.5rem] mb-auto;
   
@@ -18,6 +20,7 @@
         }
       }
     }
+
     .homepage {
       @apply m-auto gap-10;
   
@@ -28,9 +31,11 @@
           @apply mt-6 mb-5 rounded-lg border-2 border-greyblue ;
         }
       }
+
       .divider {
         @apply items-center font-poppins text-base; 
       }
+      
       &-host {
         @apply relative; 
       }
