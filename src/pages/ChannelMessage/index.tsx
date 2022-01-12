@@ -1,13 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
 
-import { DuplicateIcon } from '@heroicons/react/outline';
-import { UsersIcon } from '@heroicons/react/outline';
-import { UserIcon } from '@heroicons/react/outline';
-import { CheckIcon } from '@heroicons/react/outline';
-import { TrashIcon } from '@heroicons/react/outline';
-import { LockClosedIcon } from '@heroicons/react/solid';
+import {
+  UserIcon, CheckIcon, TrashIcon, LockClosedIcon,
+} from '@heroicons/react/outline';
 
 import Logo from '../../assets/Icon.svg';
 import Button from '../../components/Button';
@@ -48,7 +44,6 @@ const chat = [
 
 const MessageChat: React.FC = () => {
   const [cruz, onCruz] = useState(false);
-  const { hash } = useLocation();
 
   return (
 
@@ -63,15 +58,9 @@ const MessageChat: React.FC = () => {
           </h1>
         </div>
         <div className="channel-buttons flex gap-2">
-          <Button channelid>
-            #512302
-            <DuplicateIcon className="create w-5 h-5" />
-          </Button>
+          <Button label="#512302" iconRight="duplicate" appearance="outline" className="gap-[0.625rem]" />
           <Link to="/createsala">
-            <Button minicreate submit>
-              <UsersIcon className="create w-[1.1rem] h-[1.1rem]" />
-              <span>Criar sala</span>
-            </Button>
+            <Button label="Criar sala" submit iconLeft="users" className="gap-[0.625rem]" />
           </Link>
         </div>
       </header>
@@ -85,9 +74,7 @@ const MessageChat: React.FC = () => {
                 <LockClosedIcon className="w-5 h-5" />
                 Essa pergunta é anônima
               </span>
-              <Button form>
-                Enviar
-              </Button>
+              <Button size="sm" label="Enviar" />
             </div>
           </div>
         </div>

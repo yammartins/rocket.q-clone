@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 
-import { UsersIcon, DuplicateIcon } from '@heroicons/react/outline';
 import { LockClosedIcon } from '@heroicons/react/solid';
 
 import Logo from '../../assets/Icon.svg';
@@ -19,16 +18,9 @@ const Channel: React.FC = () => (
         </h1>
       </div>
       <div className="channel-buttons flex gap-2">
-        <Button channelid>
-          #512302
-          <DuplicateIcon className="create w-5 h-5" />
-        </Button>
+        <Button label="#512302" iconRight="duplicate" appearance="outline" className="gap-[0.625rem]" />
         <Link to="/createsala">
-          <Button minicreate submit>
-            <UsersIcon className="create w-[1.1rem] h-[1.1rem]" />
-
-            Criar sala
-          </Button>
+          <Button label="Criar sala" submit iconLeft="users" className="gap-[0.625rem]" />
         </Link>
       </div>
     </header>
@@ -47,9 +39,7 @@ const Channel: React.FC = () => (
               <LockClosedIcon className="w-5 h-5" />
               Essa pergunta é anônima
             </span>
-            <Button form>
-              Enviar
-            </Button>
+            <Button size="sm" label="Enviar" />
           </div>
         </div>
       </div>

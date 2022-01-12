@@ -1,37 +1,25 @@
 @layer components {
   .button {
-    @apply font-poppins;
+    @apply font-poppins rounded-lg flex;
+
+    svg {
+      @apply h-5 w-5;
+    }
 
     &.is-sm {
-      
+     @apply px-4 py-2;
     }
 
     &.is-md {
-
+     @apply py-3 px-8;
     }
 
     &.is-solid {
-
+      @apply bg-blue border-blue text-bground border-2;
     }
 
     &.is-outline {
-
-    }
-
-    &.enterchannel {
-      @apply h-12 w-full justify-center bg-blue gap-3 px-4 rounded-lg items-center flex text-wtext text-base;
-    }
-    &.hp-createchannel {
-      @apply bg-[#FBFCFF] w-full justify-center text-base rounded-lg border-blue border-2 items-center flex h-12 gap-1 text-blue px-4;
-    }
-    &.channel-id {
-      @apply flex h-[3.125rem] bg-[#FBFCFF] text-blue border-blue border-2 border-solid gap-2 items-center rounded-lg text-base px-4 py-3; 
-    } 
-    &.minicreate {
-      @apply flex h-[3.125rem] text-wtext rounded-lg bg-main gap-2 items-center px-8 py-3;
-    }
-    &.chat-submit {
-      @apply flex h-10 items-center bg-blue rounded-lg px-6 py-2 text-wtext;
-    }     
+      @apply border-blue border-2 bg-wtext text-blue;
+    }        
   }
 }

@@ -1,7 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 
-import { UsersIcon } from '@heroicons/react/outline';
-
 import Logo from '../../assets/Icon.svg';
 import Saly from '../../assets/Saly-6.svg';
 import Button from '../../components/Button';
@@ -41,10 +39,7 @@ const CreateSala: React.FC = () => {
             className="h-12 w-[22.7rem] p-4 text-base bg-[#FBFCFF] mt-6 mb-5 rounded-lg border-2 border-greyblue"
             placeholder="Insira uma senha"
           />
-          <Button submit enterchannel>
-            <UsersIcon className="create w-5 h-5" />
-            Criar sala
-          </Button>
+          <Button submit iconLeft="users" label="Criar sala" className="flex gap-[0.625rem] justify-center w-full" />
         </form>
       </div>
     </main>

@@ -17,7 +17,9 @@ module.exports = {
       liblue: '#E0ECFF',
       trash: '#E83F5B',
       icon: '#A5B0C1',
-      cancel: '#E5EAF1'
+      cancel: '#E5EAF1',
+      bground: '#FBFCFF'
+
     },
     backgroundImage: {
       main: 'linear-gradient(195.96deg, #5498FF -122.01%, #428EFF -8.36%, #297FFF 98.4%)',

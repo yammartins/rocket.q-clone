@@ -1,22 +1,19 @@
 import { HTMLAttributes } from 'react';
 
-import { UsersIcon, DuplicateIcon } from '@heroicons/react/outline';
+import {
+  UsersIcon, UserIcon, DuplicateIcon, LockClosedIcon,
+} from '@heroicons/react/outline';
+import { LogoutIcon } from '@heroicons/react/solid';
 import classNames from 'classnames';
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   full?: boolean,
   size?: 'sm' | 'md',
-  label: string,
-  iconLeft?: 'users' | 'duplicate',
-  iconRight?: 'users' | 'duplicate',
+  label: string | number,
+  iconLeft?: 'users' | 'user' | 'lock' | 'login',
+  iconRight?: 'duplicate',
   appearance?: 'outline' | 'solid';
   submit?: boolean,
-  enterchannel?: boolean;
-  maincreate?: boolean;
-  serverid?: number;
-  channelid?: boolean;
-  minicreate?: boolean;
-  form?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -26,13 +23,8 @@ const Button: React.FC<ButtonProps> = ({
   iconLeft,
   iconRight,
   appearance = 'solid',
-  enterchannel,
   submit,
-  maincreate,
-  channelid,
-  minicreate,
   className,
-  form,
   ...rest
 }) => {
   const styled = classNames(
@@ -43,16 +35,15 @@ const Button: React.FC<ButtonProps> = ({
     `is-${appearance}`,
     iconLeft && 'is-icon-left',
     iconRight && 'is-icon-right',
-    enterchannel && 'enterchannel',
-    maincreate && 'hp-createchannel',
-    channelid && 'channel-id',
-    minicreate && 'minicreate',
-    form && 'chat-submit',
   );
 
   const icons = {
     users: <UsersIcon />,
     duplicate: <DuplicateIcon />,
+    user: <UserIcon />,
+    lock: <LockClosedIcon />,
+    login: <LogoutIcon />,
+
   };
 
   return (

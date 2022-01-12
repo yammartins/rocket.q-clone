@@ -40,16 +40,11 @@ const Homepage: React.FC = () => {
           >
             <input
               type="text"
-              className="channel h-12 w-[22.7rem] p-4 text-base bg-[#FBFCFF]"
+              className="channel h-12 w-full focus-visible:outline-none p-4 text-base bg-bground"
               placeholder="Código da sala"
             />
 
-            <Button submit enterchannel>
-              <LogoutIcon
-                className="login w-6 h-6"
-              />
-              Entrar na sala
-            </Button>
+            <Button submit className="flex gap-[0.625rem] justify-center w-full" iconLeft="login" label="Entrar na sala" />
           </form>
         </div>
         <div className="divider text-greyblue flex gap-[0.84rem]">
@@ -64,10 +59,7 @@ const Homepage: React.FC = () => {
             forma fácil
           </h1>
           <Link to="createsala">
-            <Button maincreate>
-              <UsersIcon className="create w-5 h-5 text-blue" />
-              Criar sala
-            </Button>
+            <Button iconLeft="users" label="Criar sala" appearance="outline" className="flex gap-[0.625rem] justify-center w-full" />
           </Link>
         </div>
       </div>
