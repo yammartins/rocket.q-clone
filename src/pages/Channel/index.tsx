@@ -2,21 +2,14 @@ import { Link } from 'react-router-dom';
 
 import { LockClosedIcon } from '@heroicons/react/solid';
 
-import Logo from '../../assets/Icon.svg';
 import ChatImage from '../../assets/notification.svg';
 import Button from '../../components/Button';
+import Rocket from '../../components/Logo';
 
 const Channel: React.FC = () => (
   <>
     <header className="container channel flex mt-[2.185rem] mb- items-center justify-between">
-      <div className="channel-icon flex gap-3">
-        <img src={Logo} alt="logo da rocketq" />
-        <h1 className="text-h1">
-          rocket
-          <span className="text-blue">.</span>
-          q
-        </h1>
-      </div>
+      <Rocket />
       <div className="channel-buttons flex gap-2">
         <Button label="#512302" iconRight="duplicate" appearance="outline" className="gap-[0.625rem]" />
         <Link to="/createsala">

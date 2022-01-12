@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
-import Logo from '../../assets/Icon.svg';
 import Saly from '../../assets/Saly-6.svg';
 import Button from '../../components/Button';
+import Rocket from '../../components/Logo';
 
 const CreateSala: React.FC = () => {
   const navigate = useNavigate();
@@ -16,14 +16,7 @@ const CreateSala: React.FC = () => {
   return (
     <main className="wraper container">
       <div className="picture flex">
-        <div className="picture-logo">
-          <img src={Logo} alt="logo da rocketq" />
-          <h1 className="text-h1">
-            rocket
-            <span className="text-blue">.</span>
-            q
-          </h1>
-        </div>
+        <Rocket />
         <div className="picture-illustration">
           <img src={Saly} alt="Mascote da rocket.q" />
         </div>
