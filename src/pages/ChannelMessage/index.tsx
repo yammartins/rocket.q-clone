@@ -29,7 +29,17 @@ const chat = [
   },
   {
     id: '5',
-    question: 'Valeu pela aula.',
+    question: 'Obrigado pela aula.',
+  },
+  {
+    id: '6',
+    question: `"Para que não sejamos mais meninos inconstantes, levados em roda por todo o vento de doutrina, pelo engano dos homens que com astúcia enganam fraudulosamente. Antes, seguindo a verdade em amor, cresçamos em tudo naquele que é a cabeça, Cristo" 
+    - Efésios 4:14 e 15`,
+  },
+  {
+    id: '7',
+    question: `"Você quer finalmente superar o nojo que a história moderna lhe causa, desde a decadência do Império Romano, e ter uma ideia geral das nações que habitam e desolam a terra. Nesta imensidão, só procurais o que merece ser conhecido: o espírito, os costumes, os costumes das principais nações, amparados em factos que não é permitido ignorar."
+    - Voltaire, Ensaio dos costumes e dos espíritos das nações.`,
   },
 
 ];
@@ -76,23 +86,23 @@ const MessageChat: React.FC = () => (
       </div>
       <div className="questionslog flex flex-col gap-2">
         {chat.map(({ question, id }) => (
-          <div key={id} className="question w-full h-[auto] bg-liblue rounded-lg py-6 pr-8 pl-6">
+          <div key={id} className="question-closed">
             <div className="question-box">
-              <div className="question-box-profile bg-blue rounded-full w-[3.4rem] h-[3.4rem] relative items-center">
-                <UserIcon className="w-6 h-6 relative m-[auto] text-wtext" />
+              <div className="question-box-profile">
+                <UserIcon className="w-6 h-6 text-wtext" />
               </div>
-              <p className="question-box-qmessage">
+              <p className="text-ttext relative font-sans font-normal text-base w-[auto]">
                 {question}
               </p>
             </div>
-            <div className="question-buttons flex">
+            <div className="question-buttons">
               <div className="check">
                 <CheckIcon className="w-5 h-5 text-blue" />
-                <span className="check-text"> Marcar como lida</span>
+                <span className="text-greygrey font-sans font-normal text-base"> Marcar como lida</span>
               </div>
               <div className="trash">
                 <TrashIcon className="w-5 h-5 text-trash" />
-                <span className="trash-text"> Excluir</span>
+                <span className="text-greygrey font-sans font-normal text-base"> Excluir</span>
               </div>
             </div>
           </div>

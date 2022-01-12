@@ -1,14 +1,48 @@
 @layer components {
-  .question {
-    @apply relative;
+  .questionslog {
+    @apply overflow-y-scroll max-h-[38rem];
 
-    &-box {
-      @apply flex pb-3 gap-4 relative items-center;
-
-      &-profile {
-        @apply absolute items-center p-3; 
+    .question-open {
+      @apply relative w-full h-[auto] bg-liblue rounded-lg py-6 pr-8 pl-6;
+  
+      .question-box {
+        @apply flex pb-3 gap-4 relative items-center;
+        &-profile {
+          @apply bg-blue rounded-full w-[3.4rem] h-[3.4rem] min-w-[3.4rem] relative items-center flex justify-center;
+        }
+      }
+      .question-buttons {
+        @apply flex justify-end gap-6;
+        .check {
+          @apply flex gap-2 items-center;
+        }
+        .trash {
+          @apply flex gap-2 items-center;
+        }
+      }
+    }
+    .question-closed {
+      @apply relative w-full h-[auto] bg-greygrey bg-opacity-10 rounded-lg py-6 pr-8 pl-6;
+  
+      .question-box {
+        @apply flex pb-3 gap-4 relative items-center;
+        &-profile {
+          @apply bg-greygrey rounded-full w-[3.4rem] h-[3.4rem] min-w-[3.4rem] relative items-center flex justify-center;
+        }
+      }
+      .question-buttons {
+        @apply flex justify-end gap-6;
+        .check {
+          @apply flex gap-2 items-center;
+        }
+        .trash {
+          @apply hidden;
+        }
       }
     }
 
+    &::-webkit-scrollbar {
+      @apply hidden;
+    }
   }
 }
