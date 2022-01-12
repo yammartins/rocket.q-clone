@@ -1,0 +1,14 @@
+@layer components {
+  .question {
+    @apply relative;
+
+    &-box {
+      @apply flex pb-3 gap-4 relative items-center;
+
+      &-profile {
+        @apply absolute items-center p-3; 
+      }
+    }
+
+  }
+}
