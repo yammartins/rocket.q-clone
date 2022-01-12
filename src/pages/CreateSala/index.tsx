@@ -46,7 +46,6 @@ const CreateSala: React.FC = () => {
             Criar sala
           </Button>
         </form>
-
       </div>
     </main>
   );

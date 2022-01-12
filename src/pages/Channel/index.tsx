@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { UsersIcon } from '@heroicons/react/outline';
-import { DuplicateIcon } from '@heroicons/react/outline';
+import { UsersIcon, DuplicateIcon } from '@heroicons/react/outline';
 import { LockClosedIcon } from '@heroicons/react/solid';
 
 import Logo from '../../assets/Icon.svg';
@@ -27,7 +26,8 @@ const Channel: React.FC = () => (
         <Link to="/createsala">
           <Button minicreate submit>
             <UsersIcon className="create w-[1.1rem] h-[1.1rem]" />
-            <span>Criar sala</span>
+
+            Criar sala
           </Button>
         </Link>
       </div>
@@ -41,6 +41,7 @@ const Channel: React.FC = () => (
             className="box-chat-ask bg-[#FBFCFF]"
             placeholder="O que você quer perguntar?"
           />
+
           <div className="box-chat-button">
             <span className="flex gap-[0.4rem]">
               <LockClosedIcon className="w-5 h-5" />
@@ -50,7 +51,6 @@ const Channel: React.FC = () => (
               Enviar
             </Button>
           </div>
-
         </div>
       </div>
       <div className="notification grid m-[auto] gap-3 max-w-[17.3rem]">

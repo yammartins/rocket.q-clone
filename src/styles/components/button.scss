@@ -1,19 +1,37 @@
 @layer components {
   .button {
+    @apply font-poppins;
+
+    &.is-sm {
+      
+    }
+
+    &.is-md {
+
+    }
+
+    &.is-solid {
+
+    }
+
+    &.is-outline {
+
+    }
+
     &.enterchannel {
-      @apply h-12 w-[22.7rem] bg-blue gap-3 pl-[6.5rem] pr-24 rounded-lg items-center flex text-wtext font-poppins text-base;
+      @apply h-12 w-full justify-center bg-blue gap-3 px-4 rounded-lg items-center flex text-wtext text-base;
     }
     &.hp-createchannel {
-      @apply bg-[#FBFCFF] font-poppins text-base rounded-lg border-blue border-2 items-center flex w-[22.7rem] h-12 gap-1 text-blue pl-32 pr-20;
+      @apply bg-[#FBFCFF] w-full justify-center text-base rounded-lg border-blue border-2 items-center flex h-12 gap-1 text-blue px-4;
     }
     &.channel-id {
-      @apply flex h-[3.1rem] w-[8.4rem] bg-[#FBFCFF] text-blue border-blue border-2 border-solid gap-[0.6rem] items-center rounded-lg font-poppins text-base px-4 py-3; 
+      @apply flex h-[3.125rem] bg-[#FBFCFF] text-blue border-blue border-2 border-solid gap-2 items-center rounded-lg text-base px-4 py-3; 
     } 
     &.minicreate {
-      @apply flex h-[3.1rem] w-[10.7rem] text-wtext rounded-lg bg-main gap-[0.6rem] items-center px-8 py-3 font-poppins;
+      @apply flex h-[3.125rem] text-wtext rounded-lg bg-main gap-2 items-center px-8 py-3;
     }
     &.chat-submit {
-      @apply flex h-10 w-24 items-center bg-blue rounded-lg font-poppins px-6 py-2 text-wtext;
+      @apply flex h-10 items-center bg-blue rounded-lg px-6 py-2 text-wtext;
     }     
   }
 }

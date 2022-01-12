@@ -12,8 +12,9 @@
           @apply flex pb-10;
 
           &::placeholder {
-            @apply content-[''] text-greyblue font-poppins;
+            @apply text-greyblue font-poppins;
           }
+
           &:focus-visible {
             @apply outline-none
           }

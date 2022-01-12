@@ -7,15 +7,19 @@
   
       .question-box {
         @apply flex pb-3 gap-4 relative items-center;
+
         &-profile {
           @apply bg-blue rounded-full w-[3.4rem] h-[3.4rem] min-w-[3.4rem] relative items-center flex justify-center;
         }
       }
+
       .question-buttons {
         @apply flex justify-end gap-6;
+
         .check {
           @apply flex gap-2 items-center cursor-pointer;
         }
+
         .trash {
           @apply flex gap-2 items-center;
         }
@@ -26,15 +30,19 @@
   
       .question-box {
         @apply flex pb-3 gap-4 relative items-center;
+
         &-profile {
           @apply bg-greygrey rounded-full w-[3.4rem] h-[3.4rem] min-w-[3.4rem] relative items-center flex justify-center;
         }
       }
+
       .question-buttons {
         @apply flex justify-end gap-6;
+        
         .check {
           @apply flex gap-2 items-center cursor-pointer;
         }
+
         .trash {
           @apply hidden;
         }
