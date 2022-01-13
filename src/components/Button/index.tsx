@@ -10,21 +10,23 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   full?: boolean,
   size?: 'sm' | 'md',
   label: string | number,
+  submit?: boolean,
+  disabled?: boolean,
   iconLeft?: 'users' | 'user' | 'lock' | 'login',
   iconRight?: 'duplicate',
   appearance?: 'outline' | 'solid';
-  submit?: boolean,
 }
 
 const Button: React.FC<ButtonProps> = ({
   full = false,
   size = 'md',
   label,
+  submit,
+  disabled,
   iconLeft,
   iconRight,
-  appearance = 'solid',
-  submit,
   className,
+  appearance = 'solid',
   ...rest
 }) => {
   const styled = classNames(
@@ -33,16 +35,17 @@ const Button: React.FC<ButtonProps> = ({
     `is-${size}`,
     full && 'w-full',
     `is-${appearance}`,
+    disabled && 'is-disabled',
     iconLeft && 'is-icon-left',
     iconRight && 'is-icon-right',
   );
 
   const icons = {
     users: <UsersIcon />,
-    duplicate: <DuplicateIcon />,
     user: <UserIcon />,
     lock: <LockClosedIcon />,
     login: <LogoutIcon />,
+    duplicate: <DuplicateIcon />,
 
   };
 
@@ -50,6 +53,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       {...rest}
       type={submit ? 'submit' : 'button'}
+      disabled={disabled}
       className={styled}
     >
       {iconLeft && icons[iconLeft]}

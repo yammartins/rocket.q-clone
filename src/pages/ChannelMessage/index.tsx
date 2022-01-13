@@ -51,7 +51,7 @@ const MessageChat: React.FC = () => {
         <Rocket />
         <div className="channel-buttons flex gap-2">
           <Button label="#512302" iconRight="duplicate" appearance="outline" className="gap-[0.625rem]" />
-          <Link to="/createsala">
+          <Link to="/create-room">
             <Button label="Criar sala" submit iconLeft="users" className="gap-[0.625rem]" />
           </Link>
         </div>

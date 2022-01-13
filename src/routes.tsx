@@ -10,12 +10,11 @@ const Router: React.FC = () => (
     <Routes>
       <Route path="/" element={<Homepage />} />
 
-      <Route path="createsala" element={<CreateSala />} />
+      <Route path="create-room" element={<CreateSala />} />
 
-      <Route path="canaldoyam" element={<Channel />} />
+      <Route path="room/:id" element={<Channel />} />
 
       <Route path="message" element={<MessageChat />} />
-
     </Routes>
   </BrowserRouter>
 );

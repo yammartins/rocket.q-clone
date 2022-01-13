@@ -48,7 +48,7 @@ const Homepage: React.FC = () => {
             <br />
             forma fácil
           </h1>
-          <Link to="createsala">
+          <Link to="create-room">
             <Button iconLeft="users" label="Criar sala" appearance="outline" className="flex gap-[0.625rem] justify-center w-full" />
           </Link>
         </div>
