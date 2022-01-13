@@ -39,7 +39,6 @@ const chat = [
     question: `"Você quer finalmente superar o nojo que a história moderna lhe causa, desde a decadência do Império Romano, e ter uma ideia geral das nações que habitam e desolam a terra. Nesta imensidão, só procurais o que merece ser conhecido: o espírito, os costumes, os costumes das principais nações, amparados em factos que não é permitido ignorar."
     - Voltaire, Ensaio dos costumes e dos espíritos das nações.`,
   },
-
 ];
 
 const MessageChat: React.FC = () => {
