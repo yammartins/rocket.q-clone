@@ -20,9 +20,9 @@ const CreateSala: React.FC = () => {
   };
 
   return (
-    <main className="wraper container">
-      <div className="picture flex">
-        <Rocket className="mt-16" />
+    <main className="wraper container ">
+      <div className="picture flex pt-[2.185rem]">
+        <Rocket />
         <div className="picture-illustration">
           <img src={Saly} alt="Mascote da rocket.q" />
         </div>

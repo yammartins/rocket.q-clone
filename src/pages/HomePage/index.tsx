@@ -14,9 +14,9 @@ const Homepage: React.FC = () => {
   };
 
   return (
-    <header className="wraper container">
+    <header className="wraper container mt-[2.185rem]">
       <div className="picture flex">
-        <Rocket className="mt-4" />
+        <Rocket />
         <div className="picture-illustration">
           <img src={Saly} alt="Mascote da rocket.q" />
         </div>
