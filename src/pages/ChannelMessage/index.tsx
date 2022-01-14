@@ -45,7 +45,6 @@ const MessageChat: React.FC = () => {
   const [cruz, onCruz] = useState(false);
 
   return (
-
     <>
       <header className="container channel flex mt-[2.185rem] mb- items-center justify-between">
         <Rocket />

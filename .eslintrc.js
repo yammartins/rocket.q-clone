@@ -69,7 +69,6 @@ module.exports = {
     'no-restricted-syntax': [
       'error',
       'WithStatement',
-      "BinaryExpression[operator='in']",
     ],
     camelcase: 0,
     'jsx-a11y/anchor-is-valid': [

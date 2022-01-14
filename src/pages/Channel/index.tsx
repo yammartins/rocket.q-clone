@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { LockClosedIcon } from '@heroicons/react/solid';
@@ -8,9 +9,21 @@ import Rocket from '../../components/Logo';
 // import api from '../../services';
 
 const Channel: React.FC = () => {
+  const [copied, onCopied] = useState(false);
+
   const {
     id,
   } = useParams();
+
+  const clipboard = async () => {
+    if (id && 'clipboard' in navigator) {
+      await navigator.clipboard.writeText(id);
+
+      onCopied(true);
+
+      setTimeout(() => onCopied(false), 1000);
+    }
+  };
 
   // api.post(`/channels/${id}/messages`, { message: text })
 
@@ -19,7 +32,18 @@ const Channel: React.FC = () => {
       <header className="container channel flex mt-[2.185rem] mb- items-center justify-between">
         <Rocket />
         <div className="channel-buttons flex gap-2">
-          <Button label={`#${id}`} iconRight="duplicate" appearance="outline" className="gap-[0.625rem]" />
+          <div className="flex flex-col">
+            <Button
+              label={`#${id}`}
+              onClick={clipboard}
+              iconRight="duplicate"
+              appearance="outline"
+              className="gap-[0.625rem]"
+            />
+
+            {copied && <span className="mt-1">Código copiado com sucesso</span>}
+          </div>
+
           <Link to="/create-room">
             <Button label="Criar sala" submit iconLeft="users" className="gap-[0.625rem]" />
           </Link>
