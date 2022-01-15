@@ -10,6 +10,7 @@ import Rocket from '../../components/Logo';
 
 const Channel: React.FC = () => {
   const [copied, onCopied] = useState(false);
+  const [message, onMessage] = useState('');
 
   const {
     id,
@@ -55,6 +56,8 @@ const Channel: React.FC = () => {
           <div className="box-chat">
             <input
               type="text"
+              value={message}
+              onChange={({ target }) => onMessage(target.value)}
               className="box-chat-ask bg-[#FBFCFF]"
               placeholder="O que você quer perguntar?"
             />
