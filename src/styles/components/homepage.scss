@@ -1,19 +1,14 @@
 @layer components {
-  .wraper {
-    @apply flex;
 
-    .picture {
-      @apply flex-col gap-[4.125rem];
-      
-      &-illustration {
-        @apply bg-main rounded-full w-[40rem] h-[40rem] relative items-center -left-[14.5rem] mb-auto;
-  
-        img {
-          @apply absolute -right-32 -top-4
-        }
-        &::before {
-          @apply content-[""] w-[17rem] h-[17rem] bg-main opacity-10 rounded-full absolute left-[25rem] bottom-0;
-        }
+  .main {
+    .picture-illustration {
+      @apply bg-main rounded-full w-[40rem] h-[40rem] relative items-center -left-[14.5rem] top-[3.8rem];
+    
+      img {
+        @apply absolute -right-32 -top-4
+      }
+      &::before {
+        @apply content-[""] w-[17rem] h-[17rem] bg-main opacity-10 rounded-full absolute left-[25rem] bottom-0;
       }
     }
 
@@ -35,6 +30,6 @@
       &-host {
         @apply relative; 
       }
-    }
+    } 
   }
 }

@@ -20,37 +20,41 @@ const CreateSala: React.FC = () => {
   };
 
   return (
-    <main className="wraper container ">
-      <div className="picture flex pt-[2.185rem]">
-        <Rocket />
+    <>
+      <header className="flex container">
+        <div className="picture flex pt-[2.185rem]">
+          <Rocket />
+        </div>
+      </header>
+      <main className="main flex container ">
         <div className="picture-illustration">
           <img src={Saly} alt="Mascote da rocket.q" />
         </div>
-      </div>
-      <div className="create-room m-[auto]">
-        <h1 className="text-h1">Crie sua própria sala</h1>
-        <form
-          onSubmit={submit}
-          className="grid"
-        >
-          <input
-            type="text"
-            value={text}
-            onChange={({ target }) => onText(target.value)}
-            className="h-12 w-[22.7rem] p-4 text-base bg-[#FBFCFF] mt-6 mb-5 rounded-lg border-2 border-greyblue"
-            placeholder="Insira uma senha"
-          />
+        <div className="create-room m-[auto]">
+          <h1 className="text-h1">Crie sua própria sala</h1>
+          <form
+            onSubmit={submit}
+            className="grid"
+          >
+            <input
+              type="text"
+              value={text}
+              onChange={({ target }) => onText(target.value)}
+              className="h-12 w-[22.7rem] p-4 text-base bg-[#FBFCFF] mt-6 mb-5 rounded-lg border-2 border-greyblue"
+              placeholder="Insira uma senha"
+            />
 
-          <Button
-            submit
-            iconLeft="users"
-            label="Criar sala"
-            disabled={text ? text.length <= 5 : true}
-            className="flex gap-[0.625rem] justify-center w-full"
-          />
-        </form>
-      </div>
-    </main>
+            <Button
+              submit
+              iconLeft="users"
+              label="Criar sala"
+              disabled={text ? text.length <= 5 : true}
+              className="flex gap-[0.625rem] justify-center w-full"
+            />
+          </form>
+        </div>
+      </main>
+    </>
   );
 };
 
