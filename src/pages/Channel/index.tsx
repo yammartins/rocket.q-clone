@@ -26,8 +26,6 @@ const Channel: React.FC = () => {
     }
   };
 
-  // api.post(`/channels/${id}/messages`, { message: text })
-
   return (
     <>
       <header className="container channel flex mt-[2.185rem] mb- items-center justify-between">
