@@ -42,7 +42,7 @@ const chat = [
 ];
 
 const MessageChat: React.FC = () => {
-  const [cruz, onCruz] = useState(false);
+  const [check, onCheck] = useState(false);
 
   return (
     <>
@@ -71,7 +71,7 @@ const MessageChat: React.FC = () => {
         </div>
         <div className="questionslog flex flex-col gap-2">
           {chat.map(({ question, id }) => (
-            <div key={id} className={`question-open ${cruz ? 'question-closed' : ''} `}>
+            <div key={id} className={`question-open ${check ? 'question-closed' : ''} `}>
               <div className="question-box">
                 <div className="question-box-profile">
                   <UserIcon className="w-6 h-6 text-wtext" />
@@ -83,7 +83,7 @@ const MessageChat: React.FC = () => {
               <div className="question-buttons">
                 <div
                   role="presentation"
-                  onClick={() => onCruz((prev) => ! prev)}
+                  onClick={() => onCheck((prev) => ! prev)}
                   className="check"
                 >
                   <CheckIcon className="w-5 h-5 text-blue" />

@@ -1,16 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import { LockClosedIcon } from '@heroicons/react/solid';
+import {
+  UserIcon, CheckIcon, TrashIcon, LockClosedIcon,
+} from '@heroicons/react/solid';
 
 import ChatImage from '../../assets/notification.svg';
 import Button from '../../components/Button';
 import Rocket from '../../components/Logo';
-// import api from '../../services';
+import api from '../../services';
+import { MessageHandles } from './types';
 
 const Channel: React.FC = () => {
   const [copied, onCopied] = useState(false);
-  const [message, onMessage] = useState('');
+  const [message, onMessage] = useState<MessageHandles[]>([]);
+  const [text, onText] = useState('');
+  const [check, onCheck] = useState(false);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const {
+        data,
+      } = await api.post('/channel/id/messages');
+
+      onMessage(data);
+    };
+
+    fetch();
+  }, []);
 
   const {
     id,
@@ -24,6 +41,18 @@ const Channel: React.FC = () => {
 
       setTimeout(() => onCopied(false), 1000);
     }
+  };
+
+  const submit = async () => {
+    const {
+      data,
+    } = await api.post('/channels/id/messages', {
+      messages: text,
+    });
+
+    onText('');
+
+    onMessage((prev) => [...prev, data]);
   };
 
   return (
@@ -51,23 +80,27 @@ const Channel: React.FC = () => {
       <main className="channelbox container">
         <div className="box mb-[3.4rem]">
           <h1 className="text-h1">Faça sua pergunta</h1>
-          <div className="box-chat">
-            <input
-              type="text"
-              value={message}
-              onChange={({ target }) => onMessage(target.value)}
-              className="box-chat-ask bg-[#FBFCFF]"
-              placeholder="O que você quer perguntar?"
-            />
+          <form
+            onSubmit={submit}
+          >
+            <div className="box-chat">
+              <input
+                type="text"
+                value={text}
+                onChange={({ target }) => onText(target.value)}
+                className="box-chat-ask bg-[#FBFCFF]"
+                placeholder="O que você quer perguntar?"
+              />
 
-            <div className="box-chat-button">
-              <span className="flex gap-[0.4rem]">
-                <LockClosedIcon className="w-5 h-5" />
-                Essa pergunta é anônima
-              </span>
-              <Button size="sm" label="Enviar" />
+              <div className="box-chat-button">
+                <span className="flex gap-[0.4rem]">
+                  <LockClosedIcon className="w-5 h-5" />
+                  Essa pergunta é anônima
+                </span>
+                <Button size="sm" label="Enviar" />
+              </div>
             </div>
-          </div>
+          </form>
         </div>
         <div className="notification grid m-[auto] gap-3 max-w-[17.3rem]">
           <img src={ChatImage} alt="" className="w-[9.3rem] h-[8.5rem] m-[auto]" />
@@ -76,6 +109,34 @@ const Channel: React.FC = () => {
             Faça sua primeira pergunta e envie o
             código dessa sala para outras pessoas!
           </p>
+        </div>
+        <div className="questionslog flex flex-col gap-2">
+          {message.map(({ id: key, messages }) => (
+            <div key={key} className={`question-open ${check ? 'question-closed' : ''} `}>
+              <div className="question-box">
+                <div className="question-box-profile">
+                  <UserIcon className="w-6 h-6 text-wtext" />
+                </div>
+                <p className="text-ttext relative font-sans font-normal text-base w-[auto]">
+                  {messages}
+                </p>
+              </div>
+              <div className="question-buttons">
+                <div
+                  role="presentation"
+                  onClick={() => onCheck((prev) => ! prev)}
+                  className="check"
+                >
+                  <CheckIcon className="w-5 h-5 text-blue" />
+                  <span className="text-greygrey font-sans font-normal text-base"> Marcar como lida</span>
+                </div>
+                <div className="trash">
+                  <TrashIcon className="w-5 h-5 text-trash" />
+                  <span className="text-greygrey font-sans font-normal text-base"> Excluir</span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </main>
     </>
