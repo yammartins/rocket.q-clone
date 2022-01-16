@@ -7,4 +7,8 @@ export default defineConfig({
     svgr(),
     react(),
   ],
+
+  optimizeDeps: {
+    include: ['react/jsx-runtime'],
+  },
 });

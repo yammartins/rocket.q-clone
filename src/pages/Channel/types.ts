@@ -1,4 +1,5 @@
 export type MessageHandles = {
-  id: 1;
-  messages: string;
+  id: number,
+  message: string,
+  custom_id: string,
 };

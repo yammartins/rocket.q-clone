@@ -17,21 +17,23 @@ const Channel: React.FC = () => {
   const [text, onText] = useState('');
   const [check, onCheck] = useState(false);
 
+  const {
+    id,
+  } = useParams();
+
   useEffect(() => {
     const fetch = async () => {
       const {
         data,
-      } = await api.post('/channel/id/messages');
+      } = await api.get('/messages');
 
-      onMessage(data);
+      const filtered = data.filter((messages: MessageHandles) => messages.custom_id === id);
+
+      onMessage(filtered);
     };
 
     fetch();
-  }, []);
-
-  const {
-    id,
-  } = useParams();
+  }, [id]);
 
   const clipboard = async () => {
     if (id && 'clipboard' in navigator) {
@@ -43,11 +45,14 @@ const Channel: React.FC = () => {
     }
   };
 
-  const submit = async () => {
+  const submit = async (e: any) => {
+    e.preventDefault();
+
     const {
       data,
-    } = await api.post('/channels/id/messages', {
-      messages: text,
+    } = await api.post('/messages', {
+      message: text,
+      channel_id: id,
     });
 
     onText('');
@@ -97,7 +102,11 @@ const Channel: React.FC = () => {
                   <LockClosedIcon className="w-5 h-5" />
                   Essa pergunta é anônima
                 </span>
-                <Button size="sm" label="Enviar" />
+                <Button
+                  submit
+                  size="sm"
+                  label="Enviar"
+                />
               </div>
             </div>
           </form>
@@ -111,14 +120,14 @@ const Channel: React.FC = () => {
           </p>
         </div>
         <div className="questionslog flex flex-col gap-2">
-          {message.map(({ id: key, messages }) => (
+          {message.map(({ id: key, message: value }) => (
             <div key={key} className={`question-open ${check ? 'question-closed' : ''} `}>
               <div className="question-box">
                 <div className="question-box-profile">
                   <UserIcon className="w-6 h-6 text-wtext" />
                 </div>
                 <p className="text-ttext relative font-sans font-normal text-base w-[auto]">
-                  {messages}
+                  {value}
                 </p>
               </div>
               <div className="question-buttons">
