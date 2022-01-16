@@ -111,14 +111,16 @@ const Channel: React.FC = () => {
             </div>
           </form>
         </div>
-        <div className="notification grid m-[auto] gap-3 max-w-[17.3rem]">
-          <img src={ChatImage} alt="" className="w-[9.3rem] h-[8.5rem] m-[auto]" />
-          <h2 className="text-sub font-semibold text-ttext">Nenhuma mensagem por aqui...</h2>
-          <p className="text-greygrey font-sans text-details text-center">
-            Faça sua primeira pergunta e envie o
-            código dessa sala para outras pessoas!
-          </p>
-        </div>
+        {message.length <= 0 && (
+          <div className="notification grid m-[auto] gap-3 max-w-[17.3rem]">
+            <img src={ChatImage} alt="" className="w-[9.3rem] h-[8.5rem] m-[auto]" />
+            <h2 className="text-sub font-semibold text-ttext">Nenhuma mensagem por aqui...</h2>
+            <p className="text-greygrey font-sans text-details text-center">
+              Faça sua primeira pergunta e envie o
+              código dessa sala para outras pessoas!
+            </p>
+          </div>
+        ) }
         <div className="questionslog flex flex-col gap-2">
           {message.map(({ id: key, message: value }) => (
             <div key={key} className={`question-open ${check ? 'question-closed' : ''} `}>
