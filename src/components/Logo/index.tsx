@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../../assets/Icon.svg';
 
 const Rocket: React.FC = () => (
-  <Link to="">
+  <Link to="/">
     <div
       className="picture-logo container"
     >

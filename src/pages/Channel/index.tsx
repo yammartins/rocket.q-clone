@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import {
@@ -16,6 +16,7 @@ const Channel: React.FC = () => {
   const [message, onMessage] = useState<MessageHandles[]>([]);
   const [text, onText] = useState('');
   const [check, onCheck] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   const {
     id,
@@ -27,13 +28,22 @@ const Channel: React.FC = () => {
         data,
       } = await api.get('/messages');
 
-      const filtered = data.filter((messages: MessageHandles) => messages.custom_id === id);
+      const filtered = data.filter((messages: MessageHandles) => messages.channel_id === id);
 
       onMessage(filtered);
     };
 
     fetch();
   }, [id]);
+
+  useEffect(() => {
+    if (ref.current) {
+      const { clientHeight } = document.getElementsByTagName('html')[0];
+      const { top } = ref.current?.getBoundingClientRect() as DOMRect;
+
+      ref.current.style.maxHeight = `${clientHeight - 340}px`;
+    }
+  }, []);
 
   const clipboard = async () => {
     if (id && 'clipboard' in navigator) {
@@ -121,7 +131,7 @@ const Channel: React.FC = () => {
             </p>
           </div>
         ) }
-        <div className="questionslog flex flex-col gap-2">
+        <div className="questionslog" ref={ref}>
           {message.map(({ id: key, message: value }) => (
             <div key={key} className={`question-open ${check ? 'question-closed' : ''} `}>
               <div className="question-box">
