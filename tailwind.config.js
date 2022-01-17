@@ -18,7 +18,9 @@ module.exports = {
       trash: '#E83F5B',
       icon: '#A5B0C1',
       cancel: '#E5EAF1',
-      bground: '#FBFCFF'
+      bground: '#FBFCFF',
+      hred: '#EA4B65',
+      shadow: '#040911'
 
     },
     backgroundImage: {

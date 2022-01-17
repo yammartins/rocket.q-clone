@@ -20,6 +20,12 @@
 
     &.is-outline {
       @apply border-blue border-2 bg-wtext text-blue;
+    }
+    &.is-confirm {
+      @apply text-wtext font-poppins text-base font-medium bg-trash;
+    }
+    &.is-cancel {
+      @apply font-poppins text-base text-greygrey font-medium bg-cancel;
     }        
   }
 }

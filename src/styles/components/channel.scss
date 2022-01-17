@@ -80,5 +80,9 @@
         @apply hidden;
       }
     }
+    .deletemessage {
+      @apply fixed py-16 px-[5.375rem] bg-bground rounded-lg self-center text-center left-auto;
+
+    }
   }
 }

@@ -14,7 +14,7 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   disabled?: boolean,
   iconLeft?: 'users' | 'user' | 'lock' | 'login',
   iconRight?: 'duplicate',
-  appearance?: 'outline' | 'solid';
+  appearance?: 'outline' | 'solid' | 'confirm' | 'cancel';
 }
 
 const Button: React.FC<ButtonProps> = ({
