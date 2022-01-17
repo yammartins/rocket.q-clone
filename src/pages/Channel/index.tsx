@@ -15,7 +15,6 @@ const Channel: React.FC = () => {
   const [copied, onCopied] = useState(false);
   const [message, onMessage] = useState<MessageHandles[]>([]);
   const [text, onText] = useState('');
-  const [check, onCheck] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   const {
@@ -39,7 +38,7 @@ const Channel: React.FC = () => {
   useEffect(() => {
     if (ref.current) {
       const { clientHeight } = document.getElementsByTagName('html')[0];
-      const { top } = ref.current?.getBoundingClientRect() as DOMRect;
+      // const { top } = ref.current?.getBoundingClientRect() as DOMRect;
 
       ref.current.style.maxHeight = `${clientHeight - 340}px`;
     }
@@ -63,11 +62,34 @@ const Channel: React.FC = () => {
     } = await api.post('/messages', {
       message: text,
       channel_id: id,
+      read: false,
     });
 
     onText('');
 
     onMessage((prev) => [...prev, data]);
+  };
+
+  const deleteMessage = async (key: number) => {
+    await api.delete(`/messages/${key}`);
+
+    const filter = message.filter((field) => field.id !== key);
+
+    onMessage(filter);
+  };
+
+  const readMessage = async (key: number, elem: MessageHandles) => {
+    await api.put(`/messages/${key}`, {
+      ...elem,
+      read: ! elem.read,
+    });
+
+    const readed = message.map((field) => (field.id === key ? {
+      ...field,
+      read: ! elem.read,
+    } : field));
+
+    onMessage(readed);
   };
 
   return (
@@ -132,32 +154,48 @@ const Channel: React.FC = () => {
           </div>
         ) }
         <div className="questionslog" ref={ref}>
-          {message.map(({ id: key, message: value }) => (
-            <div key={key} className={`question-open ${check ? 'question-closed' : ''} `}>
-              <div className="question-box">
-                <div className="question-box-profile">
-                  <UserIcon className="w-6 h-6 text-wtext" />
+          {message.map((props) => {
+            const {
+              id: key,
+              message: value,
+              read,
+            } = props;
+
+            return (
+              <div key={key} className={`question-open ${read ? 'question-closed' : ''} `}>
+                <div className="question-box">
+                  <div className="question-box-profile">
+                    <UserIcon className="w-6 h-6 text-wtext" />
+                  </div>
+                  <p className="text-ttext relative font-sans font-normal text-base w-[auto]">
+                    {value}
+                  </p>
                 </div>
-                <p className="text-ttext relative font-sans font-normal text-base w-[auto]">
-                  {value}
-                </p>
+                <div className="question-buttons">
+                  <div
+                    role="presentation"
+                    onClick={() => readMessage(key, props)}
+                    className="check"
+                  >
+                    <CheckIcon className="w-5 h-5 text-blue" />
+                    <span className="text-greygrey font-sans font-normal text-base">
+                      {read ? 'Pergunta lida' : 'Marcar como lida'}
+                    </span>
+                  </div>
+                  {! read && (
+                    <div
+                      className="trash"
+                      onClick={() => deleteMessage(key)}
+                      role="presentation"
+                    >
+                      <TrashIcon className="w-5 h-5 text-trash" />
+                      <span className="text-greygrey font-sans font-normal text-base"> Excluir</span>
+                    </div>
+                  ) }
+                </div>
               </div>
-              <div className="question-buttons">
-                <div
-                  role="presentation"
-                  onClick={() => onCheck((prev) => ! prev)}
-                  className="check"
-                >
-                  <CheckIcon className="w-5 h-5 text-blue" />
-                  <span className="text-greygrey font-sans font-normal text-base"> Marcar como lida</span>
-                </div>
-                <div className="trash">
-                  <TrashIcon className="w-5 h-5 text-trash" />
-                  <span className="text-greygrey font-sans font-normal text-base"> Excluir</span>
-                </div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </main>
     </>

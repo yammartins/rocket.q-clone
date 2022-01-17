@@ -48,7 +48,7 @@
           }
   
           .trash {
-            @apply flex gap-2 items-center;
+            @apply flex gap-2 items-center cursor-pointer;
           }
         }
       }
@@ -70,9 +70,9 @@
             @apply flex gap-2 items-center cursor-pointer;
           }
   
-          .trash {
-            @apply hidden;
-          }
+          // .trash {
+          //   @apply hidden;
+          // }
         }
       }
   
