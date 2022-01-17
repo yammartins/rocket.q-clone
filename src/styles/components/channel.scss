@@ -80,8 +80,8 @@
         @apply hidden;
       }
     }
-    .deletemessage {
-      @apply fixed py-16 px-[5.375rem] bg-bground rounded-lg self-center text-center left-auto;
+    .deletemessage-wraper {
+      @apply bg-shadow/80 fixed top-0 left-0 w-full h-full flex m-auto;
 
     }
   }

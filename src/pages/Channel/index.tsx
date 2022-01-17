@@ -197,29 +197,31 @@ const Channel: React.FC = () => {
             );
           })}
         </div>
-        <div className="deletemessage">
-          <h2 className="text-box text-ttext font-bold font-poppins">Excluir pergunta</h2>
-          <p className="text-details font-poppins text-greygrey mt-3 mb-6">Tem certeza que você deseja excluir esta pergunta?</p>
-          <form action="">
-            <input
-              type="text"
-              className="w-[18.875rem] border-2 border-greygrey py-3 placeholder:text-greyblue placeholder:font-poppin rounded-lg placeholder:pl-4"
-              placeholder="Insira sua senha"
-            />
-            <div className="flex mt-10 gap-2 justify-center">
-              <Button
-                label="Cancelar"
-                submit
-                appearance="cancel"
+        <div className="deletemessage-wraper">
+          <div className="relative py-16 px-[5.375rem] bg-bground rounded-lg text-center m-auto max-w-[36.875rem] max-h-[22.625rem]">
+            <h2 className="text-box text-ttext font-bold font-poppins">Excluir pergunta</h2>
+            <p className="text-details font-poppins text-greygrey mt-3 mb-6">Tem certeza que você deseja excluir esta pergunta?</p>
+            <form action="">
+              <input
+                type="text"
+                className="w-[18.875rem] border-2 border-greygrey py-3 placeholder:text-greyblue placeholder:font-poppin rounded-lg placeholder:pl-4"
+                placeholder="Insira sua senha"
               />
+              <div className="flex mt-10 gap-2 justify-center">
+                <Button
+                  label="Cancelar"
+                  submit
+                  appearance="cancel"
+                />
 
-              <Button
-                label="Sim, excluir"
-                submit
-                appearance="confirm"
-              />
-            </div>
-          </form>
+                <Button
+                  label="Sim, excluir"
+                  submit
+                  appearance="confirm"
+                />
+              </div>
+            </form>
+          </div>
         </div>
       </main>
     </>
