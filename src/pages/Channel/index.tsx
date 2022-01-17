@@ -204,7 +204,7 @@ const Channel: React.FC = () => {
             <form action="">
               <input
                 type="text"
-                className="w-[18.875rem] border-2 border-greygrey py-3 placeholder:text-greyblue placeholder:font-poppin rounded-lg placeholder:pl-4"
+                className="w-[18.875rem] border-2 border-greygrey py-3 placeholder:text-greyblue placeholder:font-poppin rounded-lg text-center ml-4"
                 placeholder="Insira sua senha"
               />
               <div className="flex mt-10 gap-2 justify-center">
