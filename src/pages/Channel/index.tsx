@@ -17,6 +17,7 @@ const Channel: React.FC = () => {
   const [text, onText] = useState('');
   const [password, onPassword] = useState('');
   const [clicked, onClicked] = useState(false);
+  const [error, onError] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   const {
@@ -72,12 +73,15 @@ const Channel: React.FC = () => {
     onMessage((prev) => [...prev, data]);
   };
 
-  const deleteMessage = async (key: number) => {
+  const deleteMessage = async (e:any, key: number) => {
+    e.preventDefault();
+    const filter = message.filter((field) => field.id !== key);
+    await api.get(`/channels/${password}`)
+      .then(() => onMessage(filter))
+      .catch(({ message: xx }) => onError(xx));
     await api.delete(`/messages/${key}`);
 
-    const filter = message.filter((field) => field.id !== key);
-
-    onMessage(filter);
+    setTimeout(() => onError(true), 3000);
   };
 
   const readMessage = async (key: number, elem: MessageHandles) => {
@@ -204,7 +208,10 @@ const Channel: React.FC = () => {
             <div className="relative py-16 px-[5.375rem] bg-bground rounded-lg text-center m-auto max-w-[36.875rem] max-h-[22.625rem]">
               <h2 className="text-box text-ttext font-bold font-poppins">Excluir pergunta</h2>
               <p className="text-details font-poppins text-greygrey mt-3 mb-6">Tem certeza que você deseja excluir esta pergunta?</p>
-              <form action="">
+              <form
+                action=""
+                onSubmit={deleteMessage}
+              >
                 <input
                   type="text"
                   value={password}
@@ -212,6 +219,7 @@ const Channel: React.FC = () => {
                   className="w-[18.875rem] border-2 border-greygrey py-3 placeholder:text-greyblue placeholder:font-poppin rounded-lg text-center ml-4"
                   placeholder="Insira sua senha"
                 />
+                {error && (<span className="text-trash text-details font-poppins mt-4 block "> Senha incorreta. Por favor, insira uma senha válida.</span>)}
                 <div className="flex mt-10 gap-2 justify-center">
                   <Button
                     label="Cancelar"
