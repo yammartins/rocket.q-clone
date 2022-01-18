@@ -20,6 +20,8 @@ module.exports = {
       cancel: '#E5EAF1',
       bground: '#FBFCFF',
       hred: '#EA4B65',
+      hblue: '#5699FF',
+      hgrey: '#EAEFF5',
       shadow: '#040911'
 
     },

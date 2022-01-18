@@ -48,7 +48,13 @@ const Homepage: React.FC = () => {
                 placeholder="Código da sala"
               />
 
-              <Button submit className="flex gap-[0.625rem] justify-center w-full" iconLeft="login" label="Entrar na sala" />
+              <Button
+                submit
+                className="flex gap-[0.625rem] justify-center w-full"
+                iconLeft="login"
+                label="Entrar na sala"
+                disabled={text ? text.length <= 0 : true}
+              />
               {error && (<span className="text-trash text-details font-poppins mt-4 "> Ops ... Esse canal não existe. Por que não tenta criar um?</span>)}
             </form>
 

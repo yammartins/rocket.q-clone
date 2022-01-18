@@ -16,6 +16,10 @@
 
     &.is-solid {
       @apply bg-blue border-blue text-bground border-2;
+
+      &:hover {
+        @apply bg-hblue transition-colors duration-300 ease-in-out;
+      }
     }
 
     &.is-outline {
@@ -23,9 +27,17 @@
     }
     &.is-confirm {
       @apply text-wtext font-poppins text-base font-medium bg-trash;
+
+      &:hover {
+        @apply bg-hred transition-colors duration-300 ease-in-out;
+      }
     }
     &.is-cancel {
       @apply font-poppins text-base text-greygrey font-medium bg-cancel;
+
+      &:hover {
+        @apply bg-hgrey transition-colors duration-300 ease-in-out;
+      }
     }        
   }
 }
