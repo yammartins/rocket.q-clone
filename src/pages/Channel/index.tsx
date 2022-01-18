@@ -184,14 +184,16 @@ const Channel: React.FC = () => {
                       {read ? 'Pergunta lida' : 'Marcar como lida'}
                     </span>
                   </div>
-                  <div
-                    className="trash"
-                    onClick={() => onClicked(! clicked)}
-                    role="presentation"
-                  >
-                    <TrashIcon className="w-5 h-5 text-trash" />
-                    <span className="text-greygrey font-sans font-normal text-base"> Excluir</span>
-                  </div>
+                  {! read && (
+                    <div
+                      className="trash"
+                      onClick={() => onClicked(! clicked)}
+                      role="presentation"
+                    >
+                      <TrashIcon className="w-5 h-5 text-trash" />
+                      <span className="text-greygrey font-sans font-normal text-base"> Excluir</span>
+                    </div>
+                  )}
                 </div>
               </div>
             );
