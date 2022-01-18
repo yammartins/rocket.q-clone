@@ -81,8 +81,19 @@
       }
     }
     .deletemessage-wraper {
-      @apply bg-shadow/80 fixed top-0 left-0 w-full h-full flex m-auto;
+      @apply bg-shadow/80 fixed top-0 left-0 w-full h-full flex m-auto opacity-0 pointer-events-none transition-all duration-300 ease-in-out;
+    
+      &-card {
+        @apply top-6 transition-all duration-300 ease-in-out;
+      }
 
+      &.is-reveal {
+        @apply opacity-100 pointer-events-auto;
+
+        .deletemessage-wraper-card {
+          @apply top-0;
+        }
+      }
     }
   }
 }

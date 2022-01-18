@@ -16,8 +16,8 @@ const Channel: React.FC = () => {
   const [message, onMessage] = useState<MessageHandles[]>([]);
   const [text, onText] = useState('');
   const [password, onPassword] = useState('');
-  const [clicked, onClicked] = useState(false);
-  const [error, onError] = useState(false);
+  const [trash, onTrash] = useState<number | null>(null);
+  const [error, onError] = useState<string | null>(null);
   const ref = useRef<HTMLDivElement>(null);
 
   const {
@@ -73,15 +73,28 @@ const Channel: React.FC = () => {
     onMessage((prev) => [...prev, data]);
   };
 
-  const deleteMessage = async (e:any, key: number) => {
+  const deleteMessage = async (e: any) => {
     e.preventDefault();
-    const filter = message.filter((field) => field.id !== key);
-    await api.get(`/channels/${password}`)
-      .then(() => onMessage(filter))
-      .catch(({ message: xx }) => onError(xx));
-    await api.delete(`/messages/${key}`);
 
-    setTimeout(() => onError(true), 3000);
+    const {
+      data,
+    } = await api.get(`/channels/${id}`);
+
+    if (data && data.password) {
+      if (data.password !== password) {
+        onError('Senha incorreta. Por favor, insira uma senha válida.');
+
+        setTimeout(() => onError(null), 3000);
+
+        return;
+      }
+
+      await api.delete(`/messages/${trash}`);
+
+      onMessage((prev) => prev.filter((field) => field.id !== trash));
+
+      onTrash(null);
+    }
   };
 
   const readMessage = async (key: number, elem: MessageHandles) => {
@@ -190,12 +203,12 @@ const Channel: React.FC = () => {
                   </div>
                   {! read && (
                     <div
-                      className="trash"
-                      onClick={() => onClicked(! clicked)}
                       role="presentation"
+                      className="trash"
+                      onClick={() => onTrash(key)}
                     >
                       <TrashIcon className="w-5 h-5 text-trash" />
-                      <span className="text-greygrey font-sans font-normal text-base"> Excluir</span>
+                      <span className="text-greygrey font-sans font-normal text-base">Excluir</span>
                     </div>
                   )}
                 </div>
@@ -203,41 +216,42 @@ const Channel: React.FC = () => {
             );
           })}
         </div>
-        {clicked && (
-          <div className="deletemessage-wraper">
-            <div className="relative py-16 px-[5.375rem] bg-bground rounded-lg text-center m-auto max-w-[36.875rem] max-h-[22.625rem]">
-              <h2 className="text-box text-ttext font-bold font-poppins">Excluir pergunta</h2>
-              <p className="text-details font-poppins text-greygrey mt-3 mb-6">Tem certeza que você deseja excluir esta pergunta?</p>
-              <form
-                action=""
-                onSubmit={deleteMessage}
-              >
-                <input
-                  type="text"
-                  value={password}
-                  onChange={({ target }) => onPassword(target.value)}
-                  className="w-[18.875rem] border-2 border-greygrey py-3 placeholder:text-greyblue placeholder:font-poppin rounded-lg text-center ml-4"
-                  placeholder="Insira sua senha"
-                />
-                {error && (<span className="text-trash text-details font-poppins mt-4 block "> Senha incorreta. Por favor, insira uma senha válida.</span>)}
-                <div className="flex mt-10 gap-2 justify-center">
-                  <Button
-                    label="Cancelar"
-                    submit
-                    onClick={() => onClicked(! clicked)}
-                    appearance="cancel"
-                  />
 
-                  <Button
-                    label="Sim, excluir"
-                    submit
-                    appearance="confirm"
-                  />
-                </div>
-              </form>
-            </div>
+        <div className={`deletemessage-wraper ${trash ? 'is-reveal' : ''}`}>
+          <div className="relative py-16 px-[5.375rem] bg-bground rounded-lg text-center m-auto max-w-[36.875rem] max-h-[22.625rem] deletemessage-wraper-card">
+            <h2 className="text-box text-ttext font-bold font-poppins">Excluir pergunta</h2>
+            <p className="text-details font-poppins text-greygrey mt-3 mb-6">Tem certeza que você deseja excluir esta pergunta?</p>
+            <form
+              action=""
+              onSubmit={deleteMessage}
+            >
+              <input
+                type="text"
+                value={password}
+                onChange={({ target }) => onPassword(target.value)}
+                className="w-[18.875rem] border-2 border-greygrey py-3 placeholder:text-greyblue placeholder:font-poppin rounded-lg text-center ml-4"
+                placeholder="Insira sua senha"
+              />
+
+              {error && (<span className="text-trash text-details font-poppins mt-4 block ">{error}</span>)}
+
+              <div className="flex mt-10 gap-2 justify-center">
+                <Button
+                  label="Cancelar"
+                  submit
+                  onClick={() => onTrash(null)}
+                  appearance="cancel"
+                />
+
+                <Button
+                  label="Sim, excluir"
+                  submit
+                  appearance="confirm"
+                />
+              </div>
+            </form>
           </div>
-        )}
+        </div>
       </main>
     </>
   );
