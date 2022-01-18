@@ -15,6 +15,8 @@ const Channel: React.FC = () => {
   const [copied, onCopied] = useState(false);
   const [message, onMessage] = useState<MessageHandles[]>([]);
   const [text, onText] = useState('');
+  const [password, onPassword] = useState('');
+  const [clicked, onClicked] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   const {
@@ -182,47 +184,50 @@ const Channel: React.FC = () => {
                       {read ? 'Pergunta lida' : 'Marcar como lida'}
                     </span>
                   </div>
-                  {! read && (
-                    <div
-                      className="trash"
-                      onClick={() => deleteMessage(key)}
-                      role="presentation"
-                    >
-                      <TrashIcon className="w-5 h-5 text-trash" />
-                      <span className="text-greygrey font-sans font-normal text-base"> Excluir</span>
-                    </div>
-                  ) }
+                  <div
+                    className="trash"
+                    onClick={() => onClicked(! clicked)}
+                    role="presentation"
+                  >
+                    <TrashIcon className="w-5 h-5 text-trash" />
+                    <span className="text-greygrey font-sans font-normal text-base"> Excluir</span>
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
-        <div className="deletemessage-wraper">
-          <div className="relative py-16 px-[5.375rem] bg-bground rounded-lg text-center m-auto max-w-[36.875rem] max-h-[22.625rem]">
-            <h2 className="text-box text-ttext font-bold font-poppins">Excluir pergunta</h2>
-            <p className="text-details font-poppins text-greygrey mt-3 mb-6">Tem certeza que você deseja excluir esta pergunta?</p>
-            <form action="">
-              <input
-                type="text"
-                className="w-[18.875rem] border-2 border-greygrey py-3 placeholder:text-greyblue placeholder:font-poppin rounded-lg text-center ml-4"
-                placeholder="Insira sua senha"
-              />
-              <div className="flex mt-10 gap-2 justify-center">
-                <Button
-                  label="Cancelar"
-                  submit
-                  appearance="cancel"
+        {clicked && (
+          <div className="deletemessage-wraper">
+            <div className="relative py-16 px-[5.375rem] bg-bground rounded-lg text-center m-auto max-w-[36.875rem] max-h-[22.625rem]">
+              <h2 className="text-box text-ttext font-bold font-poppins">Excluir pergunta</h2>
+              <p className="text-details font-poppins text-greygrey mt-3 mb-6">Tem certeza que você deseja excluir esta pergunta?</p>
+              <form action="">
+                <input
+                  type="text"
+                  value={password}
+                  onChange={({ target }) => onPassword(target.value)}
+                  className="w-[18.875rem] border-2 border-greygrey py-3 placeholder:text-greyblue placeholder:font-poppin rounded-lg text-center ml-4"
+                  placeholder="Insira sua senha"
                 />
+                <div className="flex mt-10 gap-2 justify-center">
+                  <Button
+                    label="Cancelar"
+                    submit
+                    onClick={() => onClicked(! clicked)}
+                    appearance="cancel"
+                  />
 
-                <Button
-                  label="Sim, excluir"
-                  submit
-                  appearance="confirm"
-                />
-              </div>
-            </form>
+                  <Button
+                    label="Sim, excluir"
+                    submit
+                    appearance="confirm"
+                  />
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
+        )}
       </main>
     </>
   );
