@@ -46,7 +46,6 @@ const Button: React.FC<ButtonProps> = ({
     lock: <LockClosedIcon />,
     login: <LogoutIcon />,
     duplicate: <DuplicateIcon />,
-
   };
 
   return (
